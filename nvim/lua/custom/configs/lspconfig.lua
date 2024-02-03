@@ -5,7 +5,7 @@ local util = require "lspconfig/util"
 
 local lspconfig = require("lspconfig")
 
-local servers = {"tsserver", "tailwindcss", "eslint", "pyright", "rust_analyzer", "volar", "phpactor"}
+local servers = {"tsserver", "tailwindcss", "eslint", "pyright", "rust_analyzer", "volar", "phpactor", "gopls"}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -48,4 +48,21 @@ lspconfig.tailwindcss.setup({
     "django-html",
     "htmldjango",
   }
+})
+
+lspconfig.gopls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {"gopls"},
+  filetypes ={"go", "gomod", "gowork", "gotmpl"},
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
 })

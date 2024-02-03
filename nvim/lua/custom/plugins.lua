@@ -1,5 +1,15 @@
 local plugins = {
   {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    config = function ()
+      require("gopher").setup(opts)
+    end,
+    build = function ()
+      vim.cmd [[silent! GoInstallDeps]]
+    end
+  },
+  {
     "nvimtools/none-ls.nvim",
     event = "VeryLazy",
     opts = function()
@@ -28,6 +38,7 @@ local plugins = {
         "rust-analyzer",
         "vue-language-server",
         "phpactor",
+        "gopls"
       }
     }
   },
@@ -57,6 +68,7 @@ local plugins = {
         "tsx",
         "svelte",
         "vue",
+        "go"
      }
      return opts
     end
