@@ -5,7 +5,7 @@ local util = require "lspconfig/util"
 
 local lspconfig = require("lspconfig")
 
-local servers = {"tsserver", "tailwindcss", "eslint", "pyright", "rust_analyzer", "volar", "phpactor", "gopls"}
+local servers = {"tsserver", "tailwindcss", "eslint", "pyright", "rust_analyzer", "volar", "phpactor", "gopls", "elixirls"}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -13,6 +13,12 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.elixirls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {"/home/arnauberenguer/.local/share/nvim/mason/bin/elixir-ls"}
+})
 
 lspconfig.pyright.setup({
   on_attach = on_attach,
@@ -47,7 +53,26 @@ lspconfig.tailwindcss.setup({
     "html",
     "django-html",
     "htmldjango",
-  }
+    "elixir",
+    "eelixir",
+    "heex"
+  },
+  init_options = {
+    userLanguages = {
+      elixir = "html-eex",
+      eelixir = "html-eex",
+      heex = "html-eex",
+    },
+  },
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          'class[:]\\s*"([^"]*)"',
+        },
+      },
+    },
+  },
 })
 
 lspconfig.gopls.setup({

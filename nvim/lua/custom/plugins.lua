@@ -38,7 +38,8 @@ local plugins = {
         "rust-analyzer",
         "vue-language-server",
         "phpactor",
-        "gopls"
+        "gopls",
+        "elixir-ls"
       }
     }
   },
@@ -60,15 +61,15 @@ local plugins = {
         "python",
         "html",
         "php",
-        "c",
-        "cpp",
         "css",
         "bash",
         "rust",
         "tsx",
         "svelte",
         "vue",
-        "go"
+        "go",
+        "elixir",
+        "heex"
      }
      return opts
     end
