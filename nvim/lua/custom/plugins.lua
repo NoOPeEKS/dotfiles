@@ -10,13 +10,6 @@ local plugins = {
       vim.g.molten_output_win_max_height = 12
     end,
   },
-  -- {
-  --   "vhyrro/luarocks.nvim",
-  --   priority = 1001, -- this plugin needs to run before anything else
-  --   opts = {
-  --       rocks = { "magick" },
-  --   },
-  -- },
   {
     -- see the image.nvim readme for more information about configuring this plugin
     "3rd/image.nvim",
@@ -38,32 +31,34 @@ local plugins = {
   { -- directly open ipynb files as quarto docuements
     -- and convert back behind the scenes
     'GCBallesteros/jupytext.nvim',
-    opts = {
-      custom_language_formatting = {
-        python = {
-          extension = 'qmd',
-          style = 'quarto',
-          force_ft = 'quarto',
-        },
-        r = {
-          extension = 'qmd',
-          style = 'quarto',
-          force_ft = 'quarto',
-        },
-      },
-    },
+    lazy = false,
+    config = function ()
+      require("jupytext").setup({
+        style = "markdown",
+        output_extension = "md",
+        force_ft = "markdown",
+      })
+    end,
   },
   {
     "quarto-dev/quarto-nvim",
-    ft = { 'quarto' },
+    ft = { 'quarto', 'markdown' },
     dev = false,
     opts = {
       lspFeatures = {
         languages = {'r', 'python', 'julia', 'bash', 'lua', 'html', 'dot', 'javascript', 'typescript', 'ojs'},
+        chunks = "all",
+        diagnostics = {
+          enabled = true,
+          triggers = {"BufWritePost"},
+        },
+        completion = {
+          enabled = true,
+        },
       },
       codeRunner = {
         enabled = true,
-        default_method = 'slime',
+        default_method = 'molten',
       },
     },
     dependencies = {
