@@ -42,25 +42,37 @@ local plugins = {
   },
   {
     "quarto-dev/quarto-nvim",
+    lazy = false,
     ft = { 'quarto', 'markdown' },
     dev = false,
-    opts = {
-      lspFeatures = {
-        languages = {'r', 'python', 'julia', 'bash', 'lua', 'html', 'dot', 'javascript', 'typescript', 'ojs'},
-        chunks = "all",
-        diagnostics = {
-          enabled = true,
-          triggers = {"BufWritePost"},
+    config = function()
+      require("quarto").setup({
+        lspFeatures = {
+          -- NOTE: put whatever languages you want here:
+          languages = { "r", "python", "rust" },
+          chunks = "all",
+          diagnostics = {
+            enabled = true,
+            triggers = { "BufWritePost" },
+          },
+          completion = {
+            enabled = true,
+          },
         },
-        completion = {
-          enabled = true,
+        keymap = {
+          -- NOTE: setup your own keymaps:
+          hover = "H",
+          definition = "gd",
+          rename = "<leader>rn",
+          references = "gr",
+          format = "<leader>gf",
         },
-      },
-      codeRunner = {
-        enabled = true,
-        default_method = 'molten',
-      },
-    },
+        codeRunner = {
+          enabled = true,
+          default_method = "molten",
+        },
+      })
+    end,
     dependencies = {
       "jmbuhr/otter.nvim",
       opts = {},
