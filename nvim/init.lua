@@ -7,6 +7,7 @@ if custom_init_path then
 end
 
 require("core.utils").load_mappings()
+require "custom.keybinds"
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
