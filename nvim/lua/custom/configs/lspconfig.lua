@@ -23,7 +23,7 @@ lspconfig.elixirls.setup({
 lspconfig.pyright.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {"python"},
+  filetypes = {"python", "quarto"},
 })
 
 lspconfig.rust_analyzer.setup({

@@ -189,6 +189,7 @@ local default_plugins = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
       },
+      "jmbuhr/otter.nvim",
     },
     opts = function()
       return require "plugins.configs.cmp"
