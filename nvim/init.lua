@@ -19,7 +19,8 @@ end
 
 dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
-vim.g.python3_host_prog = vim.fn.exepath 'python3'
+-- vim.g.python3_host_prog = vim.fn.exepath 'python3'
+vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
 vim.g.loaded_python3_provider = nil
 vim.cmd('runtime! plugin/rplugin.vim')
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
