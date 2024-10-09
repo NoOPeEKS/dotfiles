@@ -11,7 +11,11 @@ return {
     lazy = false,
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ruff_lsp", "ruff", "pyright", "elixirls", "tailwindcss", "solargraph" },
+        ensure_installed = {
+          "lua_ls", "ruff_lsp", "ruff", "pyright",
+          "elixirls", "tailwindcss", "ruby_lsp",
+          "rust_analyzer", "gopls"
+        },
       })
     end,
   },
@@ -23,7 +27,33 @@ return {
 
       local lspconfig = require("lspconfig")
 
-      lspconfig.solargraph.setup({})
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+        cmd = {"gopls"},
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        settings = {
+          gopls = {
+            completeUnimported = true,
+            analyses = {
+              unusedparams = true,
+            },
+          },
+        },
+      })
+
+      lspconfig.ruby_lsp.setup({})
+
+      lspconfig.rust_analyzer.setup({
+        capabilities = capabilities,
+        filetypes = {"rust"},
+        settings = {
+          ['rust-analyzer'] = {
+            cargo = {
+              allFeatures = true;
+            }
+          }
+        }
+      })
 
       lspconfig.tailwindcss.setup({
         capabilities = capabilities,
@@ -72,14 +102,8 @@ return {
         capabilities = capabilities,
       })
 
-      lspconfig.ruff_lsp.setup({
-        capabilities = capabilities,
-        init_options = {
-          settings = {
-            args = {},
-          }
-        }
-      })
+      -- lspconfig.ruff_lsp.setup({})
+      lspconfig.ruff.setup({})
 
       lspconfig.pyright.setup({
         settings = {

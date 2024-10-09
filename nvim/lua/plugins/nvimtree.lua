@@ -6,7 +6,11 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
-    require("nvim-tree").setup {}
+    require("nvim-tree").setup {
+      view = {
+        side = 'right',
+      }
+    }
     vim.keymap.set('n', '<C-n>', ":NvimTreeToggle<CR>", {})
     vim.keymap.set('n', '<leader>e', ":NvimTreeFocus<CR>", {})
   end,
