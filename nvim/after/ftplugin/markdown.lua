@@ -1,4 +1,4 @@
-require("otter").activate({"python"}, true, true, nil)
+-- require("otter").activate({"python"}, true, true, nil)
 -- vim.keymap.set("n", "K", ":lua require'otter'.ask_hover()<CR>", {silent = true}) -- Hover for function definition on otter cells
 -- vim.keymap.set("n", "gd", ":lua require'otter'.ask_definition()<CR>", {silent = true}) -- Go to definition
 -- vim.keymap.set("n", "<leader>D", ":lua require'otter'.ask_type_definition()<CR>", {silent = true}) -- Go to type definition

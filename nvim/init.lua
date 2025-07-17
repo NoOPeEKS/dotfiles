@@ -15,6 +15,3 @@ require("vim-options")
 require("lazy").setup("plugins")
 vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
 vim.g.loaded_python3_provider = nil
-vim.cmd('runtime! plugin/rplugin.vim')
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
