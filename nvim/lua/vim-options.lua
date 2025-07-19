@@ -19,11 +19,4 @@ vim.keymap.set("i", "<C-j>", "<Down>", {silent = true}) -- move down in insert m
 vim.keymap.set("i", "<C-k>", "<Up>", {silent = true}) -- move up in insert mode
 vim.keymap.set("i", "<C-l>", "<Right>", {silent = true}) -- move right in insert mode
 
--- This is for reading overflowing diagnostics
-vim.diagnostic.config({ virtual_lines = true })
-vim.o.updatetime = 250  -- trigger CursorHold after 250 ms
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  callback = function()
-    vim.diagnostic.open_float(nil, { focus = false })
-  end,
-})
+vim.diagnostic.config({ virtual_text = true })

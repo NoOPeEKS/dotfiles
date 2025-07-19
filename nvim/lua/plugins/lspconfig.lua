@@ -19,6 +19,8 @@ return {
 					"gopls",
 					"angularls",
 					"ts_ls",
+          "pyrefly"
+          -- "ty"
 				},
 			})
 		end,
@@ -34,6 +36,7 @@ return {
 			vim.lsp.enable("angularls")
 			vim.lsp.enable("tailwindcss")
 			vim.lsp.enable("ruff")
+      -- vim.lsp.enable("ty")
 			vim.lsp.enable("pyright")
 
 			vim.lsp.config("pyright", {
@@ -83,6 +86,7 @@ return {
 					"eruby",
 					"erb",
 					"htmlangular",
+          "gleam"
 				},
 				init_options = {
 					userLanguages = {
@@ -90,6 +94,7 @@ return {
 						eelixir = "html-eex",
 						heex = "html-eex",
 						eruby = "erb",
+            gleam = "gleam"
 					},
 				},
 				settings = {
@@ -103,91 +108,6 @@ return {
 					},
 				},
 			})
-
-			-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			--
-			-- local lspconfig = require("lspconfig")
-			-- lspconfig.gleam.setup({})
-			--
-			-- lspconfig.ts_ls.setup({})
-			--
-			-- lspconfig.angularls.setup({
-			--   filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' }
-			-- })
-			--
-			-- lspconfig.gopls.setup({
-			--   capabilities = capabilities,
-			--   cmd = { "gopls" },
-			--   filetypes = { "go", "gomod", "gowork", "gotmpl" },
-			--   settings = {
-			--     gopls = {
-			--       completeUnimported = true,
-			--       analyses = {
-			--         unusedparams = true,
-			--       },
-			--     },
-			--   },
-			-- })
-			--
-			-- lspconfig.tailwindcss.setup({
-			--   capabilities = capabilities,
-			--   filetypes = {
-			--     "vue",
-			--     "svelte",
-			--     "blade",
-			--     "javascript",
-			--     "javascriptreact",
-			--     "php",
-			--     "html",
-			--     "django-html",
-			--     "htmldjango",
-			--     "elixir",
-			--     "eelixir",
-			--     "heex",
-			--     "eruby",
-			--     "erb",
-			--     "htmlangular",
-			--   },
-			--   init_options = {
-			--     userLanguages = {
-			--       elixir = "html-eex",
-			--       eelixir = "html-eex",
-			--       heex = "html-eex",
-			--       eruby = "erb"
-			--     },
-			--   },
-			--   settings = {
-			--     tailwindCSS = {
-			--       experimental = {
-			--         classRegex = {
-			--           'class[:]\\s*"([^"]*)"',
-			--         },
-			--       },
-			--       ["includeLanguages"] = { ["eruby"] = "erb" }
-			--     },
-			--   },
-			-- })
-			--
-			--
-			-- lspconfig.lua_ls.setup({
-			--   capabilities = capabilities,
-			-- })
-			--
-			-- -- lspconfig.ruff_lsp.setup({})
-			-- lspconfig.ruff.setup({})
-			--
-			-- lspconfig.pyright.setup({
-			--   settings = {
-			--     pyright = {
-			--       disableOrganizeImports = true, -- using Ruff
-			--     },
-			--     python = {
-			--       analysis = {
-			--         ignore = { '*' }, -- using Ruff
-			--       },
-			--     },
-			--   },
-			-- })
 
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
